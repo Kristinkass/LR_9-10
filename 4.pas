@@ -1,60 +1,66 @@
 ﻿program z4_9;
-
-type
-  arr = array[1..10] of integer;
+const
+  n = 10;
 
 var
-  array1, array2: arr;
-  i, sum1, sum2: integer;
+  arr1: array[1..n] of Integer; 
+  arr2: array[1..n] of Integer; 
+  sum1, sum2, i: Integer;
 
 begin
-  randomize;
-  
-  // заполняем массивы случайными числами
-  for i := 1 to 10 do
+  for i := 1 to n do
   begin
-    array1[i] := random(20) - 10;
-    array2[i] := random(20) - 10;
+    arr1[i] := Random(21) - 10; 
+    arr2[i] := Random(21) - 10; 
   end;
-   writeln('Исходный массив array1:');
+  writeln('Исходный первый массив:');
   for i := 1 to 10 do
-    write(array1[i], ' ');
-  
-  writeln();
-  
-  writeln('Исходный массив array2:');
+    write(arr1[i], ' ');
+  writeln(); 
+  writeln('Исходный второй массив:');
   for i := 1 to 10 do
-    write(array2[i], ' ');
+    write(arr2[i], ' ');
   writeln();
-  
-  // находим суммы положительных элементов в каждом массиве
   sum1 := 0;
-  sum2 := 0;
-  
-  for i := 1 to 10 do
+  for i := 1 to n do
   begin
-    if array1[i] > 0 then
-      sum1 := sum1 + array1[i];
-    
-    if array2[i] > 0 then
-      sum2 := sum2 + array2[i];
+    if arr1[i] > 0 then
+      sum1 := sum1 + arr1[i];
+  end;
+  sum2 := 0;
+  for i := 1 to n do
+  begin
+    if arr2[i] > 0 then
+      sum2 := sum2 + arr2[i];
   end;
   
-  // если сумма в первом массиве меньше, умножаем его элементы на 10
   if sum1 < sum2 then
   begin
-    for i := 1 to 10 do
-      array1[i] := array1[i] * 10;
+    for i := 1 to n do
+    begin
+      arr1[i] := arr1[i] * 10;
+    end;
+  end
+  else
+  begin
+    for i := 1 to n do
+    begin
+      arr2[i] := arr2[i] * 10;
+    end;
   end;
-
-  // выводим массивы на экран
-  writeln('Массив array1:');
-  for i := 1 to 10 do
-    write(array1[i], ' ');
+  Writeln('Первый массив:');
+  for i := 1 to n do
+  begin
+    Write(arr1[i], ' ');
+  end;
   
-  writeln();
+  Writeln;
   
-  writeln('Массив array2:');
-  for i := 1 to 10 do
-    write(array2[i], ' ');
+  Writeln('Второй массив:');
+  for i := 1 to n do
+  begin
+    Write(arr2[i], ' ');
+  end;
+  
+  Writeln;
 end.
